@@ -15,8 +15,8 @@ services:
     image: waynejey/kittygram_backend
     env_file: .env
     volumes:
-      - static:/static
-      - media:/media
+      - static:/static/
+      - media:/app/media/
     depends_on:
       - db
   frontend:
@@ -29,8 +29,8 @@ services:
     image: waynejey/kittygram_gateway
     env_file: .env
     volumes:
-      - static:/static
-      - media:/media
+      - static:/static/
+      - media:/app/media/
     ports:
       - 9000:80
     depends_on:
