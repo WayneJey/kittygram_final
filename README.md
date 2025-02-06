@@ -29,7 +29,10 @@ git clone https://github.com/Waynejey/kittygram_final.git
 
 ```bash
 # Запускаем контейнеры
-docker-compose up -d --build
+docker compose -f docker-compose.production.yml up -d
+docker compose -f docker-compose.production.yml exec backend python manage.py migrate
+docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic
+docker compose -f docker-compose.production.yml exec backend cp -r /app/collected_static/. /static/static/
 ```
 
 ## Переменные окружения `.env`
